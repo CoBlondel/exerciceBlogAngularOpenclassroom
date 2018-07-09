@@ -1,3 +1,9 @@
-<p>
-  post-list-item works!
-</p>
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': getColor() === 'green',
+                'list-group-item-danger': getColor() === 'red'}">
+  <p style="float: right; font-style: italic;"> {{ created_at | date: 'short' | uppercase }} </p>
+  <h3 [ngStyle]="{color : getColor()}">{{ title }}</h3>
+  <p [ngStyle]="{color : getColor()}"> {{content}} </p>
+  <button class="btn btn-success" (click)="loveIt()">Love It !</button>
+  <button class="btn btn-danger" (click)="noLoveIt()">Don't Love It !</button>
+</li>

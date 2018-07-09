@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-post-list-item',
@@ -6,10 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-list-item.component.scss']
 })
 export class PostListItemComponent implements OnInit {
+  @Input() title: string;
+  @Input() content: string;
+  @Input() loveIts: number;
+  @Input() created_at: Date;
 
   constructor() { }
 
   ngOnInit() {
   }
+
+    getColor() {
+        if (this.loveIts < 0) {
+            return 'red';
+        } else if (this.loveIts > 0) {
+            return 'green';
+        } else {
+            return 'black';
+        }
+    }
+
+    loveIt() {
+        this.loveIts ++;
+    }
+
+    noLoveIt() {
+        this.loveIts --;
+    }
 
 }
